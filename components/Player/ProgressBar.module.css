@@ -1,0 +1,27 @@
+.container {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .time {
+       font-size: 11px;
+       color: #b3b3b3;
+       min-width: 32px;
+       text-align: center;
+    }
+
+    .bar {
+        flex: 1;
+        cursor: pointer;
+        accent-color: #1db954;
+    }
+}
+
