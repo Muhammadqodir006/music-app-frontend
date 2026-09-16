@@ -24,9 +24,7 @@ export async function createSong(payload: CreateSongPayload): Promise<Song> {
     if(payload.lyrics) formData.append("lyrics", payload.lyrics);
     formData.append("audio", payload.audio);
 
-    const {data} = await api.post<Song>("/api/songs", formData, {
-        headers: { "Content-Type": "multipart/form-data"},
-    });
+    const { data } = await api.post<Song>('/api/songs', formData);
     return data;
 }
 
