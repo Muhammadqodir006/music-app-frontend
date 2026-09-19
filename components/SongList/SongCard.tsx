@@ -1,4 +1,5 @@
 import { Song } from '../../types/song';
+import Link from 'next/link';
 import styles from './SongCard.module.css';
 
 interface SongCardProps {
@@ -17,6 +18,11 @@ export default function SongCard({ song, index, isActive, onPlay, onDelete }: So
         <span className={styles.title}>{song.title}</span>
         <span className={styles.artist}>{song.artist}</span>
       </div>
+      <Link 
+      href={`/edit-song/${song.id}`}
+      className={styles.editButton}
+      onClick={(e) => e.stopPropagation()}
+      aria-label='tahrirlash'>✏️</Link>
       <button
         className={styles.deleteButton}
         onClick={(e) => {

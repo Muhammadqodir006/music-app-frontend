@@ -59,3 +59,16 @@
 .deleteButton:hover {
     color: #e91429;
 }
+
+.editButton {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.editButton:hover {
+    color: #1db954;
+}

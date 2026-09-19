@@ -36,4 +36,12 @@ export function getFullFileUrl(fileUrl: string): string {
     return `${API_BASE_URL}${fileUrl}`;
 }
 
+export async function updateSong(
+    id: string,
+    payload: {title: string; artist: string; lyrics?: string}
+): Promise<Song> {
+    const {data} = await api.patch<Song>(`/api/songs/${id}`, payload);
+    return data;
+}
+
 export default api;
