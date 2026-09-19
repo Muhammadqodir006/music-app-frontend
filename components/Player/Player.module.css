@@ -56,3 +56,17 @@
         font-size: 13px;
     }
 }
+
+.lyricsButton {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.lyricsButton:hover {
+    color: #fff;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePlayer } from "@/context/PlayerContext";
 import PlayerControls from "./PlayerControls";
 import ProgressBar from "./ProgressBar";
@@ -27,6 +28,8 @@ export default function Player() {
             onPrev={prev}/>
 
             <ProgressBar currentTime={currentTime} duration={duration} onSeek={seek} />
+
+            <Link href="/lyrics" className={styles.lricsButton} aria-label="Lyrics">📝</Link>
         </div>
     );
 }
