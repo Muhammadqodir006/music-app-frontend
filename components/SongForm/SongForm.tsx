@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createSong } from '../../lib/api';
 import { usePlayer } from '../../context/PlayerContext';
@@ -17,9 +17,15 @@ export default function SongForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // ref darhol (render kutmasdan) o'zgaradi — shuning uchun tez-tez bosishdan himoya qiladi
+  const isSubmittingRef = useRef(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    // Agar allaqachon yuborilayotgan bo'lsa — darhol chiqib ketamiz
+    if (isSubmittingRef.current) return;
 
     if (!title.trim() || !artist.trim()) {
       setError("Qo'shiq nomi va ijrochi majburiy");
@@ -30,15 +36,17 @@ export default function SongForm() {
       return;
     }
 
+    isSubmittingRef.current = true;
+    setSubmitting(true);
+
     try {
-      setSubmitting(true);
       await createSong({ title, artist, lyrics, audio: audioFile });
       await refreshPlaylist();
       router.push('/');
     } catch (err) {
       setError("Qo'shishda xatolik yuz berdi");
       console.error(err);
-    } finally {
+      isSubmittingRef.current = false;
       setSubmitting(false);
     }
   };

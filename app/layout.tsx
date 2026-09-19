@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PlayerProvider } from "@/context/PlayerContext";
+import Navbar from "@/components/Navbar/Navbar";
 import Player from "../components/Player/Player";
 import "./globals.css";
 
@@ -17,8 +18,9 @@ export default function RootLayout({
     <html lang="uz">
       <body>
         <PlayerProvider>
+          <Navbar />
           <main>{children}</main>
-          {<Player /> }
+          <Player /> 
         </PlayerProvider>
       </body>
     </html>
